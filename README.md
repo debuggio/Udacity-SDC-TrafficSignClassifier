@@ -13,6 +13,17 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
+[//]: # (Image References)
+
+[image1]: ./examples/train_examples.png "Visualization"
+[image2]: ./examples/train_examples_gray.png "Grayscaling"
+[image3]: ./Images/30.jpg "30"
+[image4]: ./Images/priority.jpg "Priority"
+[image5]: ./Images/road_work.jpg "Road work"
+[image6]: ./Images/slippery_road.jpg "Slippery road"
+[image7]: ./Images/stop.jpg "Stop"
+
+
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -40,7 +51,7 @@ signs data set:
 
 Here is an exploratory visualization of the data set.
 
-![Example images][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/examples/train_examples.png]
+![Example images][image1]
 
 ###Design and Test a Model Architecture
 
@@ -50,7 +61,7 @@ As a first step, I decided to convert the images to grayscale because there is n
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![Example grayscale images][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/examples/train_examples_gray.png]
+![Example grayscale images][image2]
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -78,32 +89,34 @@ My final model consisted of the following layers:
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 I started these parameters:
-EPOCHS = 10
-KEEP_PROBABILITY_TRAIN = .5
-BATCH_SIZE = 128
-RATE = 0.001
---	RESULTS	--
-- train_accuracy: 0.92
-- Validaition_accuracy: 0.85
+* EPOCHS = 10
+* KEEP_PROBABILITY_TRAIN = .5
+* BATCH_SIZE = 128
+* RATE = 0.001
+
+RESULTS
+* train_accuracy: 0.92
+* Validaition_accuracy: 0.85
 
 after some tuning I ended up with:
-EPOCHS = 9
-KEEP_PROBABILITY_TRAIN = .5
-BATCH_SIZE = 50
-RATE = 0.002
---	RESULTS	--
-- train_accuracy: 0.987
-- Validaition_accuracy: 0.963
+* EPOCHS = 9
+* KEEP_PROBABILITY_TRAIN = .5
+* BATCH_SIZE = 50
+* RATE = 0.002
+
+RESULTS
+* train_accuracy: 0.987
+* Validaition_accuracy: 0.963
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 But I wasn't happy, because it only recognized 3 out of 5 images from web. Plus starting from 7 ehoch accuracy didn't raise at all (even for 20+ epoches)
 As a result I picked lower learning rate with more epoches
 
-EPOCHS = 20
-KEEP_PROBABILITY_TRAIN = .5
-BATCH_SIZE = 100
-RATE = 0.0009
+* EPOCHS = 20
+* KEEP_PROBABILITY_TRAIN = .5
+* BATCH_SIZE = 100
+* RATE = 0.0009
 
 My final model results were:
 * training set accuracy of 0.994
@@ -116,8 +129,8 @@ My final model results were:
 
 Here are five German traffic signs that I found on the web:
 
-![speed limit 30][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/Images/30.jpg] ![priority][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/Images/priority.jpg] ![road_work][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/Images/road_work.jpg] 
-![slippery_road][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/Images/slippery_road.jpg] ![stop][https://github.com/debuggio/CarND-Deep-Learning/blob/master/Udacity-SDC-TrafficSignClassifier/Images/stop.jpg]
+![speed limit 30][image3] ![priority][image4] ![road_work][image5] 
+![slippery_road][image6] ![stop][image7]
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
