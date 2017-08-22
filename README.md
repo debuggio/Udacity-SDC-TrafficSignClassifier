@@ -22,6 +22,9 @@ The goals / steps of this project are the following:
 [image5]: ./Images/road_work.jpg "Road work"
 [image6]: ./Images/slippery_road.jpg "Slippery road"
 [image7]: ./Images/stop.jpg "Stop"
+[image8]: ./examples/distribution-train.png "Distribution train"
+[image9]: ./examples/distribution-validation.png "Distribution validation"
+[image10]: ./examples/distribution-test.png "Distribution test"
 
 
 ## Rubric Points
@@ -49,9 +52,11 @@ signs data set:
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set.
+Distribution of the labels is presented:
+![Distribution train][image8]
+![Distribution validation][image9]
+![EDistribution test][image10]
 
-![Example images][image1]
 
 ###Design and Test a Model Architecture
 
@@ -123,9 +128,27 @@ My final model results were:
 * validation set accuracy of 0.960 
 * test set accuracy of 0.916
 
+If an iterative approach was chosen:
+* What was the first architecture that was tried and why was it chosen? 
+** At first I tried LeNet from 1 of previous labs and it gave me around 85% on validation set, that is too low
+* What were some problems with the initial architecture? 
+** There were many problems started with not the best values for parameters ending with too simple model
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+** I added 2 dropout step, so network wont rely on any given activation to be present. So it learns redundant representation for everything
+* Which parameters were tuned? How were they adjusted and why?
+** Tuned all parameters. 
+*** Epoches - because model gave a pretty small accuracy for chosen learn for other 3 parameters
+*** keep probability - to have only 50% of data passed through, to prevent overfitting (50% was moetioned in video)
+*** batch size - less than 128 gave better results, this value was chosen kind of empirically
+*** learning rate - I started from 0.02 and reduced it until learning accuracy started growing more or less smoothly and gave better results
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+** Adding 2 droupout layers improved my model accuracy for validation set for around 5%, because there was a problem with overfitting. 
+
 ###Test a Model on New Images
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+
+I tried to find images that we can meet in real life. Images with different size (scalling should produce some troubles for trained model), with different backgrounds (trees, buildings). Also I'm using 1 image with watermarks on it to make things more complicated. Also I'm using image with number 30 on it. It might be missclassified for 50 or 80, because numbers after resizing may look almost the identically
 
 Here are five German traffic signs that I found on the web:
 
